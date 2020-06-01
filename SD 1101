@@ -1,0 +1,49 @@
+module sd1101_moore(input  clk,
+                   input reset,
+                   input din,
+                   output  reg dout, output reg [2:0] state);
+
+  always @(posedge clk or posedge reset) begin
+    if(reset) begin
+      dout <= 1'b0;
+      state <= 0;
+    end
+    else begin
+      case(state)
+        0: begin
+          dout <=1'b0;
+          if(din)
+            state <=1;
+        end
+        1: begin
+          dout <= 1'b0;
+          if(din) 
+            state <= 2;
+          else
+            state <= 1;
+        end
+        2: begin
+          dout <= 1'b0;
+          if(~din)
+            state <= 3;
+        end
+        3: begin
+          dout <= 1'b0;
+          if(din)
+            state <= 4;
+          else
+            state <= 0;
+        end
+        4: begin
+          dout = 1'b1;
+          if(din)
+            state <= 1;
+          else
+            state <= 0;
+        end
+      endcase
+    end
+  end
+
+
+endmodule
