@@ -1,0 +1,13 @@
+module act1(a,b,c,d,f);
+input a,b,c,d;
+output reg f;
+always@(*)
+begin
+	casez({a,b,c,d})
+	4'b11?? : f=1'b1;
+	4'b???1 : f=1'b1;
+	4'b?01? : f=1'b1;
+	default : f=1'b0;
+	endcase
+	end
+	endmodule
