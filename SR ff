@@ -1,0 +1,14 @@
+module sr(S,R,Q,Qbar,clk);
+input S,R,clk;
+inout Q,Qbar;
+wire o1,o2,w1,w2,w3,w4;
+supply1 vdd;supply0 gnd;
+pmos(o1,vdd,clk);pmos(Q,vdd,o1);
+pmos(o1,vdd,S);pmos(Q,vdd,Qbar);
+pmos(o2,vdd,R);pmos(Qbar,vdd,o2);
+pmos(o2,vdd,clk);pmos(Qbar,vdd,Q);
+nmos(o1,w1,clk);nmos(w1,gnd,S);
+nmos(o2,w2,clk);nmos(w2,gnd,R);
+nmos(Q,w3,o1);nmos(w3,gnd,Qbar);
+nmos(Qbar,w4,Q);nmos(w4,gnd,o2);
+endmodule
