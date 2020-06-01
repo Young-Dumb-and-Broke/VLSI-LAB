@@ -16,4 +16,4 @@ nmos(Q,w3,o1);nmos(w3,gnd,Qbar);
 nmos(Qbar,w4,Q);nmos(w4,gnd,o2);
 endmodule
 
-//READ DESCRIPTION PLEASE
+//Keep clock period on modelsim as 100ns as feedback delay is 5 ns
