@@ -1,0 +1,29 @@
+initial  
+begin 
+clk_signal=4'b0000; 
+qn=1; 
+qout=0; 
+qn_1=0; 
+end 
+always@(posedge clk) 
+begin 
+  clk_signal=clk_signal+1; 
+  clk_1=clk_signal[26]; 
+end 
+ 
+always@(posedge clk_1) 
+begin 
+  if (qout==13) 
+    begin 
+      qn=1; 
+      qn_1=0; 
+      qout=1; 
+    end 
+  else 
+    begin 
+      qout=qn+qn_1; 
+      qn_1=qn; 
+      qn=qout; 
+      end 
+end 
+endmodule
