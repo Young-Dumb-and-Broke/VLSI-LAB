@@ -1,0 +1,27 @@
+
+module ex2(clk,rst,qout);
+  input clk,rst;
+  output reg [2:0]qout;
+  reg [27:0]clk_signal;
+  reg clk_1;
+ 
+initial
+begin
+clk_signal=3'b000;
+qout=0;
+end
+
+always@(posedge clk)
+begin
+  clk_signal=clk_signal+1;
+  clk_1=clk_signal[26];
+end
+
+always@(posedge clk_1 or posedge rst)
+begin
+  if (rst)
+    qout=0;
+  else
+      qout=qout+2;
+end
+endmodule
